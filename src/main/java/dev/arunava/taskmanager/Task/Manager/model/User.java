@@ -1,10 +1,13 @@
 package dev.arunava.taskmanager.Task.Manager.model;
 
-
 import jakarta.persistence.*;
-
 import java.util.UUID;
 
+/**
+ * The User entity class.
+ *
+ * It is used as the schema for User in the db.
+ */
 @Entity
 @Table(name = "users")
 public class User {
@@ -12,7 +15,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String fullName;
-    private String username;
     private String email;
     private String password;
     private String roles;
@@ -20,12 +22,17 @@ public class User {
     public User(){
 
     }
+
     public User(String fullName, String username, String email, String password, String roles) {
         this.fullName = fullName;
-        this.username = username;
         this.email = email;
         this.password = password;
         this.roles = roles;
+    }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
     public String getRoles() {
@@ -52,14 +59,6 @@ public class User {
         this.fullName = fullName;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -81,7 +80,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", fullName='" + fullName + '\'' +
-                ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';

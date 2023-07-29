@@ -7,6 +7,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Arrays;
 import java.util.Collection;
 
+/**
+ * Implements the UserDetails interface.
+ *
+ * It is used for the purpose of various user related operations within the application.
+ */
 public class SecurityUser implements UserDetails {
 
     private User user;
@@ -22,7 +27,7 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return user.getEmail();
     }
 
     @Override
